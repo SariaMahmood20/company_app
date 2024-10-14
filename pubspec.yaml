@@ -18,12 +18,13 @@ dev_dependencies:
   provider: ^6.1.2
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
-  firebase_auth: ^5.3.1
+  #firebase_auth: ^5.3.1
   firebase_core: ^3.6.0
   firebase_storage: ^12.3.3
   shared_preferences: ^2.3.2
   internet_connectivity_checker: ^1.0.2
   another_flushbar: ^1.12.30
+  google_fonts: ^6.2.1
 
 flutter:
   uses-material-design: true
