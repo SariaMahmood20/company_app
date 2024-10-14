@@ -1,0 +1,49 @@
+lib/
+|-- features/
+|   |-- user/
+|   |   |-- data/
+|   |   |   |-- models/
+|   |   |   |   |-- user_model.dart
+|   |   |   |-- services/
+|   |   |       |-- user_service.dart
+|   |   |
+|   |   |-- presentation/
+|   |       |-- views/
+|   |           |-- user_login_view.dart
+|   |           |-- user_dashboard_view.dart
+|   |       |-- viewmodels/
+|   |           |-- user_viewmodel.dart
+|
+|   |-- leave/
+|   |   |-- data/
+|   |   |   |-- models/
+|   |   |   |   |-- leave_model.dart
+|   |   |   |-- services/
+|   |   |       |-- leave_service.dart
+|   |   |
+|   |   |-- presentation/
+|   |       |-- views/
+|   |           |-- leave_apply_view.dart
+|   |           |-- leave_status_view.dart
+|   |       |-- viewmodels/
+|   |           |-- leave_viewmodel.dart
+|
+|   |-- attendance/
+|   |   |-- data/
+|   |   |   |-- models/
+|   |   |   |   |-- attendance_model.dart
+|   |   |   |-- services/
+|   |   |       |-- attendance_service.dart
+|   |   |
+|   |   |-- presentation/
+|   |       |-- views/
+|   |           |-- attendance_checkin_view.dart
+|   |           |-- attendance_checkout_view.dart
+|   |       |-- viewmodels/
+|   |           |-- attendance_viewmodel.dart
+|
+|-- utils/
+|   |-- constants.dart
+|   |-- helpers.dart
+|
+|-- main.dart
