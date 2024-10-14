@@ -2,16 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:deutics_attendance_app/app/views/widget/button.dart';
+import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 
 class NewPostCard extends StatelessWidget {
-  const NewPostCard({super.key});
+  NewPostCard({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final styles = Theme.of(context).extension<AppTheme>()!; 
     return Column(
       children: [
         Container(
+          height: 93.h,
+          width: double.infinity,
           child: Card(
+            color: styles.lightGrey,
             elevation: 6.h,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
@@ -23,13 +28,17 @@ class NewPostCard extends StatelessWidget {
                       SizedBox(
                         width: 10.w,
                       ),
-                      const Column(
+                      Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
                             "Saria Mahmood",
+                            style: styles.roboto16w600,
                           ),
-                          Text("Flutter Developer"),
+                          Text(
+                            "Flutter Developer",
+                            style: styles.roboto8w400,
+                            ),
                         ],
                       )
                     ],
@@ -37,7 +46,10 @@ class NewPostCard extends StatelessWidget {
                   SizedBox(height: 15.h,),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    child: const Text("What's on your mind?"),
+                    child: Text(
+                      "What's on your mind?",
+                      style: styles.roboto16w400.copyWith(color: Colors.grey),
+                      ),
                   )
                 ],
               ),
