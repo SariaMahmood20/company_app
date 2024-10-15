@@ -13,10 +13,12 @@ class NewPostCard extends StatelessWidget {
     return Column(
       children: [
         Container(
-          height: 93.h,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(25))
+          ),
           width: double.infinity,
           child: Card(
-            color: styles.lightGrey,
+            color: styles.neutralColor,
             elevation: 6.h,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
