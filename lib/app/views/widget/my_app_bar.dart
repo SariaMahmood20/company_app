@@ -1,3 +1,4 @@
+import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -7,6 +8,7 @@ class MyAppBar extends StatelessWidget implements PreferredSize{
 
   @override
   Widget build(BuildContext context) {
+    final styles = Theme.of(context).extension<AppTheme>()!;
     return AppBar(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(
@@ -15,7 +17,7 @@ class MyAppBar extends StatelessWidget implements PreferredSize{
       ),
       elevation: 6.h,
       centerTitle: true,
-      title: Text(appBarTitle),
+      title: Text(appBarTitle, style: styles.roboto20w600,),
     );
   }
   @override

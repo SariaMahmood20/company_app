@@ -12,7 +12,7 @@ class PostCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: Card(
-        color: styles.lightGrey,
+        color: styles.neutralColor,
         elevation: 6.h,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
@@ -43,7 +43,7 @@ class PostCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Text(
-                  "What's on your mind?",
+                  "What's on your mind?sdjfasdkljfasdhkhfasdjklfbjksdbcbnasjklfgasdjhkfbnsc sdjkfhsdjhcksd jhshfjkasd jhdnasc sdkhdfjkhasdklhfgasdkfbsdfbsdk",
                   style: styles.roboto16w400,
                 ),
               )
