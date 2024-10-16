@@ -7,4 +7,6 @@ class SvgIcons{
   static const logout = "${_iconsPath}Logout.svg";
   static const settings = "${_iconsPath}Settings.svg";
   static const records = "${_iconsPath}Records.svg";
+  static const password = "${_iconsPath}Password.svg";
+  static const editImage = "${_iconsPath}Edit.svg";
 }
