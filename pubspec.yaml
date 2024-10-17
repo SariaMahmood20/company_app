@@ -27,6 +27,8 @@ dev_dependencies:
   google_fonts: ^6.2.1
   circle_nav_bar: ^2.1.0+1
   badges: ^3.1.2
+  flutter_text_box: ^0.0.1
+  auto_size_text_field: ^2.2.4
 
 flutter:
   uses-material-design: true

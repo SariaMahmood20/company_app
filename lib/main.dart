@@ -34,6 +34,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:deutics_attendance_app/features/user/presentation/views/user_screen.dart';
 import 'package:deutics_attendance_app/features/user/presentation/views/profile_settings_screen.dart';
 import 'package:deutics_attendance_app/features/user/presentation/views/password_setting_screen.dart';
+import 'package:deutics_attendance_app/features/leaves/presentation/views/application_record_screen.dart';
+import 'package:deutics_attendance_app/features/leaves/presentation/views/write_application_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -51,7 +53,7 @@ class MainApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           theme: lightTheme, // Apply the lightTheme here
-          home:const  PasswordSettingScreen(),
+          home:WriteApplicationScreen(),
         );
       },
     );

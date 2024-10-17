@@ -9,4 +9,7 @@ class SvgIcons{
   static const records = "${_iconsPath}Records.svg";
   static const password = "${_iconsPath}Password.svg";
   static const editImage = "${_iconsPath}Edit.svg";
+  static const backArrow = "${_iconsPath}back.svg";
+  static const forwardArrow = "${_iconsPath}forward.svg";
+  static const calender = "${_iconsPath}Calender.svg";
 }
