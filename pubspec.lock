@@ -69,10 +69,10 @@ packages:
     dependency: "direct dev"
     description:
       name: circle_nav_bar
-      sha256: c251771de1980229383218321fa66bfddde61a2902aeb333110e91fe911bb203
+      sha256: d6b3720c4b22ec85cea004c9088ee26baf104ea65dbd264ed260cc1f32bee700
       url: "https://pub.dev"
     source: hosted
-    version: "2.1.0+1"
+    version: "2.1.1"
   clock:
     dependency: transitive
     description:

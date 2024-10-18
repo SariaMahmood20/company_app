@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:deutics_attendance_app/app/navigation/route_names.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 
 class NewApplicationCard extends StatelessWidget {
@@ -28,19 +29,24 @@ class NewApplicationCard extends StatelessWidget {
               "Write an application for a new leave.",
               style: styles.roboto14w400,
             ),
-            Container(
-              height: 41.h,
-              width: 41.w,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: styles.black
-              ),
-              child: Center(
-                child: SvgPicture.asset(
-                  SvgIcons.forwardArrow,
-                  color: styles.white,
-                  height: 17.5.h,
-                  width: 10.w,
+            InkWell(
+              onTap: (){
+                Navigator.restorablePushNamed(context, RouteNames.newApplication);
+              },
+              child: Container(
+                height: 41.h,
+                width: 41.w,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: styles.black
+                ),
+                child: Center(
+                  child: SvgPicture.asset(
+                    SvgIcons.forwardArrow,
+                    color: styles.white,
+                    height: 17.5.h,
+                    width: 10.w,
+                  ),
                 ),
               ),
             )

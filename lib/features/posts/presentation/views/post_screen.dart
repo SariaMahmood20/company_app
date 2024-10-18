@@ -3,9 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:deutics_attendance_app/features/posts/presentation/widgets/new_post_card.dart';
 import 'package:deutics_attendance_app/features/posts/presentation/widgets/post_card.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_app_bar.dart';
-import 'package:deutics_attendance_app/app/views/widget/navigation_bar.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_drawer.dart';
 
 
 class PostScreen extends StatelessWidget {
@@ -13,9 +10,7 @@ class PostScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MyAppBar(appBarTitle: "Posts"),
-      body: Padding(
+    return  Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SingleChildScrollView(
           child: Column(
@@ -27,10 +22,7 @@ class PostScreen extends StatelessWidget {
             ],          
           ),
         ),
-      ),
-      bottomNavigationBar: MyNavigationBar(),
-      drawer: MyDrawer(),
-    );
+      );
   }
 }
 

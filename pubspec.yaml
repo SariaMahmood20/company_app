@@ -25,7 +25,7 @@ dev_dependencies:
   internet_connectivity_checker: ^1.0.2  
   another_flushbar: ^1.12.30
   google_fonts: ^6.2.1
-  circle_nav_bar: ^2.1.0+1
+  circle_nav_bar: ^2.1.1
   badges: ^3.1.2
   flutter_text_box: ^0.0.1
   auto_size_text_field: ^2.2.4

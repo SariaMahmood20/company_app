@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:deutics_attendance_app/app/resources/app_strings.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 import 'package:deutics_attendance_app/app/views/widget/my_divider.dart';
+import 'package:deutics_attendance_app/app/navigation/route_names.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -37,6 +37,9 @@ class MyDrawer extends StatelessWidget {
               "Settings", 
               style: styles.roboto16w600,
             ),
+            onTap: (){
+              Navigator.pushNamed(context, RouteNames.settings);
+            },
           ),
           const MyDivider(),
           ListTile(
