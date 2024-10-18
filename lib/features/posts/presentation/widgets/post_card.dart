@@ -9,7 +9,7 @@ class PostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
-    return Container(
+    return SizedBox(
       width: double.infinity,
       child: Card(
         color: styles.neutralColor,

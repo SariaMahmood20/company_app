@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/features/posts/presentation/widgets/new_post_card.dart';
 import 'package:deutics_attendance_app/features/posts/presentation/widgets/post_card.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_app_bar.dart';
 import 'package:deutics_attendance_app/app/views/widget/custom_appbar.dart';
 import 'package:deutics_attendance_app/app/views/widget/navigation_bar.dart';
 import 'package:deutics_attendance_app/app/views/widget/my_drawer.dart';

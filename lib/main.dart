@@ -34,10 +34,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'app/routes/routes.dart';
+import 'app/routes/routes_name.dart';
 import 'app/views/widget/navigation_bar.dart';
 import 'features/auth/presentation/views/login_view.dart';
 import 'features/auth/presentation/views/signin_view.dart';
 import 'features/checkin/views/checkin_screen.dart';
+import 'features/user/views/profile_settings_screen.dart';
+import 'features/user/views/user_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -54,8 +58,10 @@ class MainApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: lightTheme, // Apply the lightTheme here
-          home: WriteApplicationScreen(),
+          initialRoute: RoutesName.login,
+          onGenerateRoute: Routes.generateRoute,
         );
       },
     );

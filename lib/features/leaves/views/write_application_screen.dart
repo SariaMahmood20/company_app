@@ -10,7 +10,6 @@ import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/views/widget/my_drawer.dart';
 import 'package:deutics_attendance_app/app/views/widget/navigation_bar.dart';
 import 'package:deutics_attendance_app/app/utils/date_provider.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_app_bar.dart';
 
 class WriteApplicationScreen extends StatelessWidget {
 

@@ -1,11 +1,9 @@
+import 'package:deutics_attendance_app/app/views/widget/custom_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
-import 'package:deutics_attendance_app/features/user/presentation/widgets/edit_info.dart';
-import 'package:deutics_attendance_app/features/user/presentation/widgets/change_profile_picture.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_app_bar.dart';
+import 'package:deutics_attendance_app/features/user/widgets/edit_info.dart';
+import 'package:deutics_attendance_app/features/user/widgets/change_profile_picture.dart';
 
 class ProfileSettingsScreen extends StatelessWidget {
 
@@ -15,7 +13,7 @@ class ProfileSettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return Scaffold(
-      appBar: MyAppBar(appBarTitle: "Profile Settings"),
+      appBar: const CustomAppbar(title: "PROFILE SETTINGS"),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
         child: Column(

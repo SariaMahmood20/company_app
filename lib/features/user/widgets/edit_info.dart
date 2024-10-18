@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 import 'package:deutics_attendance_app/app/utils/utils_function.dart';
-import 'package:deutics_attendance_app/features/user/presentation/widgets/edit_modal_sheet.dart';
+import 'package:deutics_attendance_app/features/user/widgets/edit_modal_sheet.dart';
 
 class EditInfoRow extends StatelessWidget {
   final String text;

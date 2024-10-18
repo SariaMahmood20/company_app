@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
-import 'package:deutics_attendance_app/app/views/widget/my_app_bar.dart';
 import 'package:deutics_attendance_app/app/views/widget/button.dart';
+
+import '../../../app/views/widget/custom_appbar.dart';
 
 class PasswordSettingScreen extends StatefulWidget {
   const PasswordSettingScreen({super.key});
@@ -31,7 +32,7 @@ class _PasswordSettingScreenState extends State<PasswordSettingScreen> {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return SafeArea(
       child: Scaffold(
-        appBar: MyAppBar(appBarTitle: "Password Settings"),
+        appBar: const CustomAppbar(title: "PASSWORD SETTINGS"),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
