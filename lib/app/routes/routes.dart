@@ -15,7 +15,7 @@ class Routes{
   static Route<dynamic> generateRoute(RouteSettings settings){
     switch (settings.name){
       case RoutesName.post:
-        return MaterialPageRoute(builder: (context) => const PostScreen());
+        return MaterialPageRoute(builder: (context) => PostScreen());
       case RoutesName.login:
         return MaterialPageRoute(builder: (context) => const LoginView());
       case RoutesName.signUp:
