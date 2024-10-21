@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../app/routes/routes_name.dart';
 import '../../../../app/views/widget/app_button.dart';
 import '../widgets/headings.dart';
 import '../widgets/termcondition_string.dart';
@@ -38,7 +39,9 @@ class SignInView extends StatelessWidget {
                     text: 'SIGN IN',
                     fontSize: 15,
                     textDecoration: TextDecoration.underline,
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamed(context, RoutesName.login);
+                    },
                   ),
                 ],
               ),
@@ -102,7 +105,9 @@ class SignInView extends StatelessWidget {
               65.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(buttonText: "REGISTER NOW",onPressed: (){},),
+                child: AppButton(buttonText: "REGISTER NOW",onPressed: (){
+                  Navigator.pushNamed(context, RoutesName.navigationBar);
+                },),
               ),
             ],
           ),

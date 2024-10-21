@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../app/resources/app_theme.dart';
+import '../../../../app/routes/routes_name.dart';
 import '../../../../app/views/widget/app_button.dart';
 import '../widgets/headings.dart';
 import '../widgets/text_button.dart';
@@ -40,7 +41,9 @@ class LoginView extends StatelessWidget {
                     text: 'REGISTER',
                     fontSize: 15,
                     textDecoration: TextDecoration.underline,
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamed(context, RoutesName.signUp);
+                    },
                   ),
                 ],
               ),
@@ -69,7 +72,9 @@ class LoginView extends StatelessWidget {
               100.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(buttonText: "SIGN IN",onPressed: (){},),
+                child: AppButton(buttonText: "SIGN IN",onPressed: (){
+                  Navigator.pushNamed(context, RoutesName.navigationBar);
+                },),
               ),
             ],
           ),

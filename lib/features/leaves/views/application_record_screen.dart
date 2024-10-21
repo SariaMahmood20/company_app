@@ -14,7 +14,6 @@ class ApplicationRecordScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     
     return Scaffold(
-      appBar: CustomAppbar(title: "APPLICATION"),
       body: SafeArea(child: Padding(
         padding: EdgeInsets.all(20.h),
         child: Column(
@@ -25,8 +24,6 @@ class ApplicationRecordScreen extends StatelessWidget {
           ],
         )
       )),
-      bottomNavigationBar: const MyNavigationBar(),
-      drawer: const MyDrawer(),
     );
   }
 }

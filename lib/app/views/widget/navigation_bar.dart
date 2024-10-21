@@ -18,9 +18,15 @@ class MyNavigationBar extends StatefulWidget {
 }
 
 class _MyNavigationBarState extends State<MyNavigationBar> with SingleTickerProviderStateMixin {
-
   int _tabIndex = 0;
   late PageController pageController;
+
+  final List<String> _titles = [
+    "POSTS",
+    "CHECK-IN",
+    "APPLICATIONS",
+
+  ];
 
   @override
   void initState() {
@@ -29,7 +35,6 @@ class _MyNavigationBarState extends State<MyNavigationBar> with SingleTickerProv
   }
 
   void onTabChange(int index) {
-    // Update the tab index and animate to the page
     setState(() {
       _tabIndex = index;
     });
@@ -95,8 +100,8 @@ class _MyNavigationBarState extends State<MyNavigationBar> with SingleTickerProv
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return Scaffold(
-      appBar: CustomAppbar(title: "Deutics App"),
-      drawer: MyDrawer(),
+      appBar: CustomAppbar(title: _titles[_tabIndex]), // Use the title based on the selected index
+      drawer: const MyDrawer(),
       body: PageView(
         controller: pageController,
         onPageChanged: (index) {
@@ -106,8 +111,9 @@ class _MyNavigationBarState extends State<MyNavigationBar> with SingleTickerProv
         },
         children: const [
           PostScreen(), // Replace with your actual screens
-        ApplicationRecordScreen(),
           CheckInScreen(),
+          ApplicationRecordScreen(),
+
           // Add more screens as needed
         ],
       ),

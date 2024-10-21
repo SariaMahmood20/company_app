@@ -6,7 +6,7 @@ import 'package:deutics_attendance_app/app/routes/routes_name.dart';
 import 'package:deutics_attendance_app/app/routes/routes.dart';
 
 void main() {
-  runApp(const MainApp());
+   runApp(const MainApp());
 }
 
 class MainApp extends StatelessWidget {
@@ -20,9 +20,10 @@ class MainApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: lightTheme, // Apply the lightTheme here
           onGenerateRoute: Routes.generateRoute,
-          initialRoute: RoutesName.navigationBar,
+          initialRoute: RoutesName.login,
         );
       },
     );

@@ -5,6 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 
+import '../../../app/routes/routes_name.dart';
+
 class UserScreen extends StatelessWidget {
   const UserScreen({super.key});
 
@@ -25,6 +27,9 @@ class UserScreen extends StatelessWidget {
               Text("Flutter Developer", style: styles.roboto8w400,),
               SizedBox(height: 70.h,),
               ListTile(
+                onTap: (){
+                  Navigator.pushNamed(context, RoutesName.setting);
+                },
                 leading: SvgPicture.asset(
                   SvgIcons.settings,
                   width: 31.5.w,
@@ -35,6 +40,9 @@ class UserScreen extends StatelessWidget {
               ),
               divider,
               ListTile(
+                onTap: (){
+                  Navigator.pushNamed(context, RoutesName.changePassword);
+                },
                 leading: SvgPicture.asset(
                   SvgIcons.password,
                   width: 32.w,

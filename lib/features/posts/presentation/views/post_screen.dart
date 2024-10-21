@@ -5,6 +5,7 @@ import 'package:deutics_attendance_app/features/posts/presentation/widgets/new_p
 import 'package:deutics_attendance_app/features/posts/presentation/widgets/post_card.dart';
 
 import '../../../../app/views/widget/custom_appbar.dart';
+import '../../../../app/views/widget/my_drawer.dart';
 
 class PostScreen extends StatelessWidget {
   const PostScreen({super.key});
@@ -12,7 +13,6 @@ class PostScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const CustomAppbar(title: "POSTS"),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(

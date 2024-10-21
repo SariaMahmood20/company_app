@@ -16,9 +16,6 @@ class CheckInScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      drawer: const MyDrawer(),
-      appBar: const CustomAppbar(title: 'CHECK-IN',),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: SingleChildScrollView(
@@ -34,7 +31,6 @@ class CheckInScreen extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const MyNavigationBar(),
     );
   }
 }

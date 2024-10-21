@@ -21,7 +21,7 @@ class Routes{
         return MaterialPageRoute(builder: (context) => const LoginView());
       case RoutesName.signUp:
         return MaterialPageRoute(builder: (context) => const SignInView());
-      case RouteNames.navigationBar:
+      case RoutesName.navigationBar:
         return MaterialPageRoute(builder: (context)=> const MyNavigationBar());
       case RoutesName.splash:
         return MaterialPageRoute(builder: (context) => const SplashView());

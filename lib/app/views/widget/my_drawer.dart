@@ -1,3 +1,4 @@
+import 'package:deutics_attendance_app/app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -14,58 +15,83 @@ class MyDrawer extends StatelessWidget {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return Drawer(
       shadowColor: Colors.black,
+      width: 280.w,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topRight: Radius.circular(50.w), bottomRight: Radius.circular(50.w))
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(50.w),
+          bottomRight: Radius.circular(50.w),
+        ),
       ),
-      child: ListView(
-        children: [
-
-          UserAccountsDrawerHeader(
-            accountName: Text("Saria Mahmood",
-              style: GoogleFonts.roboto(
-                fontSize: 14.sp
-              )
+      child: Container(
+        color: Colors.black12,
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 50.h,
             ),
-            accountEmail: Text("sariamahmood20@gmail.com", style: styles.roboto8w400,),
-            currentAccountPicture: const CircleAvatar(),
-            decoration: BoxDecoration(
-              color: styles.white
+            UserAccountsDrawerHeader(
+              onDetailsPressed: (){
+                  Navigator.pushNamed(context, RoutesName.userProfile);
+              },
+              accountName: Text("Saria Mahmood",
+                style: GoogleFonts.roboto(
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                  fontSize: 14.sp
+                )
+              ),
+              accountEmail: Text("sariamahmood20@gmail.com",
+                  style: GoogleFonts.roboto(
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                      fontSize: 14.sp
+                  )
+              ),
+              currentAccountPicture: const CircleAvatar(),
+              decoration: const BoxDecoration(
+                color: Color(0xDDF8F8F8)
+              ),
             ),
-
-          ),
-          ListTile(
-            leading: SvgPicture.asset(
-              SvgIcons.settings, 
-              color: styles.black,
+            ListTile(
+              onTap: (){
+                Navigator.pushNamed(context, RoutesName.setting);
+              },
+              leading: SvgPicture.asset(
+                SvgIcons.settings,
+                color: styles.black,
+              ),
+              title: Text(
+                "Settings",
+                style: styles.roboto16w600,
+              ),
             ),
-            title: Text(
-              "Settings", 
-              style: styles.roboto16w600,
+            const MyDivider(),
+            ListTile(
+              onTap: (){
+                Navigator.pushNamed(context, RoutesName.setting);
+              },
+              leading: SvgPicture.asset(
+                SvgIcons.records,
+                color: styles.black,
+              ),
+              title: Text(
+                "Records",
+                style: styles.roboto16w600,
+              ),
             ),
-          ),
-          const MyDivider(),
-          ListTile(
-            leading: SvgPicture.asset(
-              SvgIcons.records,
-              color: styles.black,  
-            ),
-            title: Text(
-              "Records", 
-              style: styles.roboto16w600,
-            ),
-          ),
-          const MyDivider(),
-          ListTile(
-            leading: SvgPicture.asset(
-              SvgIcons.logout,
-              color: styles.black,
-            ),
-            title: Text(
-              "Logout", 
-              style: styles.roboto16w600,
-            ),
-          )
-        ],
+            const MyDivider(),
+            ListTile(
+              leading: SvgPicture.asset(
+                SvgIcons.logout,
+                color: styles.black,
+              ),
+              title: Text(
+                "Logout",
+                style: styles.roboto16w600,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
