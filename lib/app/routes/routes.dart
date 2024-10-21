@@ -8,6 +8,7 @@ import '../../features/posts/presentation/views/post_screen.dart';
 import '../../features/user/views/password_setting_screen.dart';
 import '../../features/user/views/profile_settings_screen.dart';
 import '../../features/user/views/user_screen.dart';
+import 'package:deutics_attendance_app/app/views/widget/navigation_bar.dart';
 import '../../splash.dart';
 
 
@@ -20,6 +21,8 @@ class Routes{
         return MaterialPageRoute(builder: (context) => const LoginView());
       case RoutesName.signUp:
         return MaterialPageRoute(builder: (context) => const SignInView());
+      case RouteNames.navigationBar:
+        return MaterialPageRoute(builder: (context)=> const MyNavigationBar());
       case RoutesName.splash:
         return MaterialPageRoute(builder: (context) => const SplashView());
       case RoutesName.application:
