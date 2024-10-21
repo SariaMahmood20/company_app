@@ -18,9 +18,6 @@ dev_dependencies:
   provider: ^6.1.2  
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0  
-  firebase_auth: ^5.3.1  
-  firebase_core: ^3.6.0  
-  firebase_storage: ^12.3.3  
   shared_preferences: ^2.3.2  
   internet_connectivity_checker: ^1.0.2  
   another_flushbar: ^1.12.30
@@ -28,6 +25,9 @@ dev_dependencies:
   circle_nav_bar: ^2.1.1
   badges: ^3.1.2
   flutter_text_box: ^0.0.1
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  cloud_firestore: ^5.4.4
   auto_size_text_field: ^2.2.4
 
 flutter:
