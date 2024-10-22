@@ -5,6 +5,8 @@ import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/features/user/widgets/edit_info.dart';
 import 'package:deutics_attendance_app/features/user/widgets/change_profile_picture.dart';
 
+import '../../../app/views/widget/my_drawer.dart';
+
 class ProfileSettingsScreen extends StatelessWidget {
 
   ProfileSettingsScreen({super.key});
@@ -14,6 +16,7 @@ class ProfileSettingsScreen extends StatelessWidget {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return Scaffold(
       appBar: const CustomAppbar(title: "PROFILE SETTINGS"),
+      drawer: const MyDrawer(),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 25.h),
         child: Column(
@@ -24,27 +27,27 @@ class ProfileSettingsScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text("Name", style: styles.roboto14w600),
-                SizedBox(height: 28.h,),
+                SizedBox(height: 15.h,),
                 Text("Saria Mahmood", style: styles.roboto14w400.copyWith(color: Colors.grey),),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 const Divider(),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 Text("Designation", style: styles.roboto14w600),
-                SizedBox(height: 28.h,),
+                SizedBox(height: 15.h,),
                 EditInfoRow(text: "Flutter Developer"),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 const Divider(),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 Text("Email", style: styles.roboto14w600),
-                SizedBox(height: 28.h,),
+                SizedBox(height: 15.h,),
                 Text("sariamahmood20@gmail.com", style: styles.roboto14w400.copyWith(color: Colors.grey),),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 const Divider(),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 Text("About Us", style: styles.roboto14w600),
-                SizedBox(height: 28.h,),
+                SizedBox(height: 25.h,),
                 EditInfoRow(text: "Hi, I am a Flutter Developer at Deutics Global!"),
-                SizedBox(height: 15.h,),
+                SizedBox(height: 10.h,),
                 const Divider(),
               ],
             )
