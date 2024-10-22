@@ -4,8 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/routes/routes_name.dart';
 import 'package:deutics_attendance_app/app/routes/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
    runApp(const MainApp());
 }
 
