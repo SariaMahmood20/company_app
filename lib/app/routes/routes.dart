@@ -27,7 +27,7 @@ class Routes{
       case RoutesName.navigationBar:
         return MaterialPageRoute(builder: (context)=> const MyNavigationBar());
       case RoutesName.splash:
-        return MaterialPageRoute(builder: (context) => const SplashView());
+        return MaterialPageRoute(builder: (context) => SplashView());
       case RoutesName.application:
         return MaterialPageRoute(builder: (context) => const ApplicationRecordScreen());
       case RoutesName.newApplication:
@@ -35,7 +35,7 @@ class Routes{
       case RoutesName.checkIn:
         return MaterialPageRoute(builder: (context) => const ApplicationRecordScreen());
       case RoutesName.userProfile:
-        return MaterialPageRoute(builder: (context) => const UserScreen());
+        return MaterialPageRoute(builder: (context) => UserScreen());
       case RoutesName.setting:
         return MaterialPageRoute(builder: (context) => ProfileSettingsScreen());
       case RoutesName.changePassword:

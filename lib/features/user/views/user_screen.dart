@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
@@ -8,9 +9,11 @@ import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 import '../../../app/routes/routes_name.dart';
 
 class UserScreen extends StatelessWidget {
-  const UserScreen({super.key});
+  UserScreen({super.key});
 
   static Widget divider = const Divider();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,14 +55,19 @@ class UserScreen extends StatelessWidget {
                 title: Text("Password", style: styles.roboto16w600,),
               ),
               divider,
-              ListTile(
-                leading: SvgPicture.asset(
-                  SvgIcons.logout,
-                  height: 32.h,
-                  width: 32.w,
-                  color: styles.black,
+              GestureDetector(
+                onTap: (){
+                  _auth.signOut();
+                },
+                child: ListTile(
+                  leading: SvgPicture.asset(
+                    SvgIcons.logout,
+                    height: 32.h,
+                    width: 32.w,
+                    color: styles.black,
+                  ),
+                  title: Text("Logout", style: styles.roboto16w600,),
                 ),
-                title: Text("Logout", style: styles.roboto16w600,),
               ),
               divider
             ],

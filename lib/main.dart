@@ -1,3 +1,4 @@
+import 'package:deutics_attendance_app/splash_services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,6 +29,7 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => SplashService()),
       ],
       child: ScreenUtilInit(
         designSize: const Size(393, 895),
@@ -38,7 +40,7 @@ class MainApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: lightTheme, // Apply the lightTheme here
             onGenerateRoute: Routes.generateRoute,
-            initialRoute: RoutesName.login,
+            initialRoute: RoutesName.splash,
           );
         },
       ),

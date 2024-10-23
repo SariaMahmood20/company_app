@@ -63,6 +63,7 @@ class AuthViewModel extends ChangeNotifier {
       );
       print("User logged in");
 
+
       Navigator.pushNamed(context, RoutesName.navigationBar);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -98,6 +99,7 @@ class AuthViewModel extends ChangeNotifier {
         textColor: Colors.white,
         fontSize: 16.0,
       );
+      Navigator.pushNamed(context, RoutesName.login);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Utils.flushBarErrorMessages("No user found for that email.", context);
