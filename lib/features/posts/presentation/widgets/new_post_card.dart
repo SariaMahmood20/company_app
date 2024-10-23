@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'package:deutics_attendance_app/app/views/widget/button.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
+import 'package:provider/provider.dart';
+
+import 'package:deutics_attendance_app/app/utils/utils_function.dart';
+import 'package:deutics_attendance_app/features/posts/presentation/view_models/post_view_model.dart';
+
 
 class NewPostCard extends StatelessWidget {
+  final newPostController = TextEditingController();
   NewPostCard({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final styles = Theme.of(context).extension<AppTheme>()!; 
+    final styles = Theme.of(context).extension<AppTheme>()!;
+    final postViewModel = Provider.of<PostViewModel>(context);
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(25))
-          ),
           width: double.infinity,
           child: Card(
             color: styles.neutralColor,
@@ -48,9 +51,14 @@ class NewPostCard extends StatelessWidget {
                   SizedBox(height: 15.h,),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.w),
-                    child: Text(
-                      "What's on your mind?",
-                      style: styles.roboto16w400.copyWith(color: Colors.grey),
+                    child: TextField(
+                      controller: newPostController,
+                      decoration: InputDecoration(
+                        hintText: "What's on  your mind?",
+                        hintStyle: styles.roboto16w600.copyWith(color: Colors.grey),
+                        hintTextDirection: TextDirection.ltr,
+                        enabledBorder: InputBorder.none
+                      ),
                       ),
                   )
                 ],
@@ -65,16 +73,22 @@ class NewPostCard extends StatelessWidget {
             Button(
               width: 99,
               buttonText: "DRAFT",
-              onPressed: (){},
-              ),
+              onPressed: () {},
+            ),
             Button(
-              width: 99,
-              buttonText: "POST",
-              onPressed: (){}
-              )
+              width: 99, 
+              buttonText: "POST", 
+              onPressed: ()async {
+                final postContent = newPostController.text.trim();
+                await postViewModel.createPost(postContent, "1");
+                newPostController.clear();
+                // UtilsFunction.showFlushbarMessage(context, Colors.greenAccent, "Posted Successfully");
+            })
           ],
         ),
-        SizedBox(height: 35.h,)
+        SizedBox(
+          height: 20.h,
+        )
       ],
     );
   }

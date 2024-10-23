@@ -6,39 +6,58 @@ class UserModel {
     required this.email,
     required this.password,
     required this.designation,
-    required this.joinDate,
     required this.profilePictureUrl,
   });
-  late final String employeeId;
+  
+  late final int employeeId;
   late final String firstName;
   late final String lastName;
   late final String email;
   late final String password;
   late final String designation;
-  late final String joinDate;
   late final String profilePictureUrl;
-  
-  UserModel.fromJson(Map<String, dynamic> json){
+
+  UserModel.fromJson(Map<String, dynamic> json) {
     employeeId = json['employeeId'];
     firstName = json['first_name'];
     lastName = json['last_name'];
     email = json['email'];
     password = json['password'];
     designation = json['designation'];
-    joinDate = json['joinDate'];
-    profilePictureUrl = json['profilePictureUrl'];
+    profilePictureUrl = json['profile_picture_url'];
   }
 
-  Map<String, dynamic> toJson() {
+  // Static toJson method
+  static Map<String, dynamic> toJson(UserModel user) {
     final _data = <String, dynamic>{};
-    _data['employeeId'] = employeeId;
-    _data['first_name'] = firstName;
-    _data['last_name'] = lastName;
-    _data['email'] = email;
-    _data['password'] = password;
-    _data['designation'] = designation;
-    _data['joinDate'] = joinDate;
-    _data['profilePictureUrl'] = profilePictureUrl;
+    _data['employeeId'] = user.employeeId;
+    _data['first_name'] = user.firstName;
+    _data['last_name'] = user.lastName;
+    _data['email'] = user.email;
+    _data['password'] = user.password;
+    _data['designation'] = user.designation;
+    _data['profile_picture_url'] = user.profilePictureUrl; // Keep the key consistent
     return _data;
+  }
+
+  // Add copyWith method
+  UserModel copyWith({
+    int? employeeId,
+    String? firstName,
+    String? lastName,
+    String? email,
+    String? password,
+    String? designation,
+    String? profilePictureUrl,
+  }) {
+    return UserModel(
+      employeeId: employeeId ?? this.employeeId,
+      firstName: firstName ?? this.firstName,
+      lastName: lastName ?? this.lastName,
+      email: email ?? this.email,
+      password: password ?? this.password,
+      designation: designation ?? this.designation,
+      profilePictureUrl: profilePictureUrl ?? this.profilePictureUrl,
+    );
   }
 }

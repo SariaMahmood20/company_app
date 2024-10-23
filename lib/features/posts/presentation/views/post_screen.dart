@@ -26,23 +26,3 @@ class PostScreen extends StatelessWidget {
   }
 }
 
-// import 'package:flutter/material.dart';
-// import 'package:deutics_attendance_app/app/resources/app_theme.dart';
-
-// class PostScreen extends StatelessWidget {
-//   const PostScreen({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final styles = Theme.of(context).extension<AppTheme>()!;
-//     return Scaffold(
-//       body: Center(
-//         child: Text(
-//           "Hi!",
-//           // style: TextStyle(color: Colors.black),
-//           style: styles.roboto20w600,
-//           ),
-//       ),
-//     );
-//   }
-// }

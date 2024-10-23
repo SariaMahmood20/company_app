@@ -1,3 +1,4 @@
+
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -20,17 +21,19 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       const Duration(seconds: 5), 
       (){
-        Navigator.pushReplacementNamed(context, RouteNames.post);
+        Navigator.pushReplacementNamed(context, RouteNames.login);
         }
     );
   }
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
-    return Center(
-      child: Text(
-        "Welcome to the Deutics Global!",
-        style: styles.roboto20w400,
+    return Scaffold(
+      body: Center(
+        child: Text(
+          "Welcome to the Deutics Global!",
+          style: styles.roboto20w400,
+        ),
       ),
     );
   }

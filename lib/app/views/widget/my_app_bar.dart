@@ -17,7 +17,7 @@ class MyAppBar extends StatelessWidget implements PreferredSize{
       ),
       elevation: 6.h,
       centerTitle: true,
-      title: Text(appBarTitle, style: styles.roboto20w600,),
+      title: Text(appBarTitle, style: styles.roboto25w700,),
     );
   }
   @override

@@ -1,11 +1,15 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+
+import 'package:deutics_attendance_app/app/routes/routes_name.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 import 'package:deutics_attendance_app/app/views/widget/my_divider.dart';
 import 'package:deutics_attendance_app/app/navigation/route_names.dart';
+
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -14,6 +18,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
     return Drawer(
+
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topRight: Radius.circular(50.w), bottomRight: Radius.circular(50.w))
       ),
@@ -64,7 +69,10 @@ class MyDrawer extends StatelessWidget {
             ),
           )
         ],
+
+      
+
       ),
-    );
+      );
   }
 }

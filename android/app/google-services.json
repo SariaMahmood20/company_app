@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "130731140664",
+    "project_id": "deuticsapp",
+    "storage_bucket": "deuticsapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130731140664:android:4bbb86be857a291ae428cd",
+        "android_client_info": {
+          "package_name": "com.example.deutics_attendance_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClM_EGQoFkx1UGxv0wH71YSUOdUowygV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

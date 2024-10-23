@@ -11,6 +11,9 @@ import 'package:deutics_attendance_app/features/leaves/presentation/views/write_
 import 'package:deutics_attendance_app/features/user/presentation/views/password_setting_screen.dart';
 import 'package:deutics_attendance_app/features/user/presentation/views/profile_settings_screen.dart';
 import 'package:deutics_attendance_app/features/user/presentation/views/user_screen.dart';
+import 'package:deutics_attendance_app/features/auth/presentation/views/login_view.dart';
+import 'package:deutics_attendance_app/features/auth/presentation/views/signup_view.dart';
+import 'package:deutics_attendance_app/features/auth/presentation/views/forgot_password.dart';
 
 class Routes{
   static Route<dynamic> generateRoutes(RouteSettings settings){
@@ -31,6 +34,12 @@ class Routes{
         return MaterialPageRoute(builder: (BuildContext context)=> const PasswordSettingScreen());
       case RouteNames.navigationBar:
         return MaterialPageRoute(builder: (BuildContext context)=> const MyNavigationBar());
+      case RouteNames.login:
+        return MaterialPageRoute(builder: (BuildContext context)=> const LoginView());
+      case RouteNames.register:
+        return MaterialPageRoute(builder: (BuildContext context)=> const SignInView());
+      case RouteNames.forgotPassword:
+        return MaterialPageRoute(builder: (BuildContext context)=> const ForgotPasswordScreen());
       default:
         return MaterialPageRoute(builder: (BuildContext context)=> const ErrorScreen());
     }

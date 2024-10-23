@@ -9,5 +9,6 @@ class RouteNames{
   static const settings = "Settings Screen";
   static const profileSettings = "Profile Settings Screen";
   static const passwordSettings = "Password Settings Screen";
+  static const forgotPassword = "Forgot Passwrod";
   static const navigationBar = "Navigation Bar";
 }
