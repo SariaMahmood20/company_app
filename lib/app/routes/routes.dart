@@ -1,5 +1,6 @@
 import 'package:deutics_attendance_app/app/routes/routes_name.dart';
 import 'package:flutter/material.dart';
+import '../../features/auth/presentation/views/forgot_password_view.dart';
 import '../../features/auth/presentation/views/login_view.dart';
 import '../../features/auth/presentation/views/signin_view.dart';
 import '../../features/leaves/views/application_record_screen.dart';
@@ -19,6 +20,8 @@ class Routes{
         return MaterialPageRoute(builder: (context) => PostScreen());
       case RoutesName.login:
         return MaterialPageRoute(builder: (context) => const LoginView());
+      case RoutesName.forgotPassword:
+        return MaterialPageRoute(builder: (context) => const ForgotPasswordView());
       case RoutesName.signUp:
         return MaterialPageRoute(builder: (context) => const SignInView());
       case RoutesName.navigationBar:

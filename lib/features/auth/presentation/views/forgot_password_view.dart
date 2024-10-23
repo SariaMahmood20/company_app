@@ -1,35 +1,31 @@
-import 'package:deutics_attendance_app/features/auth/presentation/widgets/text_field.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../app/resources/app_theme.dart';
 import '../../../../app/routes/routes_name.dart';
 import '../../../../app/utils/utils.dart';
 import '../../../../app/views/widget/app_button.dart';
 import '../view_models/auth_view_model.dart';
 import '../widgets/headings.dart';
 import '../widgets/text_button.dart';
+import '../widgets/text_field.dart';
 
-
-class LoginView extends StatefulWidget {
-  const LoginView({super.key});
+class ForgotPasswordView extends StatefulWidget {
+  const ForgotPasswordView({super.key});
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<ForgotPasswordView> createState() => _ForgotPasswordViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   final AuthViewModel _viewModel = AuthViewModel();
 
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
 
 
   @override
   void dispose() {
     emailController.dispose();
-    passwordController.dispose();
     super.dispose();
   }
 
@@ -48,7 +44,7 @@ class _LoginViewState extends State<LoginView> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'SIGN IN',
+                    'Email Verification',
                     style: GoogleFonts.roboto(
                         color: Colors.black,
                         fontSize: 23.sp,
@@ -56,18 +52,18 @@ class _LoginViewState extends State<LoginView> {
                     ),
                   ),
                   CustomTextButton(
-                    text: 'REGISTER',
+                    text: 'SIGN IN',
                     fontSize: 15,
                     textDecoration: TextDecoration.underline,
                     onPressed: (){
-                      Navigator.pushNamed(context, RoutesName.signUp);
+                      Navigator.pushNamed(context, RoutesName.login);
                     },
                   ),
                 ],
               ),
               40.verticalSpace,
               const CustomTextColumn(
-                titleText: 'HAVE AN ACCOUNT?',
+                titleText: 'Please Verify Your Email',
                 titleFontSize: 16,
                 descriptionText: 'Sign in to speed up the checkout \nprocess',
                 descriptionFontSize: 15,
@@ -75,34 +71,17 @@ class _LoginViewState extends State<LoginView> {
               ),
               50.verticalSpace,
               EditTextField(labelText: 'Email Address', controller: emailController, keyboardType: TextInputType.emailAddress, obscureText: false),
-              15.verticalSpace,
-              EditTextField(labelText: 'Password', controller: passwordController, keyboardType: TextInputType.visiblePassword, obscureText: true),
-              10.verticalSpace,
-              Align(
-                alignment: Alignment.centerRight,
-                child: CustomTextButton(
-                  text: 'FORGOT PASSWORD?',
-                  fontSize: 14,
-                  textDecoration: TextDecoration.underline,
-                  onPressed: (){
-                    Navigator.pushNamed(context, RoutesName.forgotPassword);
-                  },
-                ),
-              ),
               100.verticalSpace,
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(buttonText: "SIGN IN",onPressed: (){
+                child: AppButton(buttonText: "Send",onPressed: (){
                   if (emailController.text.isEmpty) {
-                  Utils.flushBarErrorMessages(
-                  "Please enter Email", context);
-                  } else if (passwordController.text.isEmpty) {
-                  Utils.flushBarErrorMessages(
-                  "Please enter Password", context);
-                  } else {
-                    _viewModel.loginUser(
+                    Utils.flushBarErrorMessages(
+                        "Please enter Email", context);
+                  }else {
+                    print("button pressed");
+                    _viewModel.sendPasswordResetEmail(
                         email: emailController.text,
-                        password: passwordController.text,
                         context: context);
                   }
                 },),

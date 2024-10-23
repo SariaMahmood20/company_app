@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../app/routes/routes_name.dart';
 import '../../../../app/utils/utils.dart';
 import '../../../../app/views/widget/app_button.dart';
@@ -20,7 +19,7 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  final SignInViewModel _viewModel = SignInViewModel();
+  final AuthViewModel _viewModel = AuthViewModel();
 
 
   final TextEditingController firstNameController = TextEditingController();
@@ -67,15 +66,7 @@ class _SignInViewState extends State<SignInView> {
                     fontSize: 15,
                     textDecoration: TextDecoration.underline,
                     onPressed: () {
-                      _viewModel.registerUser(
-                        firstName: firstNameController.text,
-                        lastName: lastNameController.text,
-                        designation: designationController.text,
-                        email: emailController.text,
-                        password: passwordController.text,
-                        context: context,
-                      );
-                      // Navigator.pushNamed(context, RoutesName.login);
+                       Navigator.pushNamed(context, RoutesName.login);
                     },
                   ),
                 ],
@@ -168,7 +159,14 @@ class _SignInViewState extends State<SignInView> {
                         Utils.flushBarErrorMessages(
                             "Password must be greater then 6", context);
                       } else {
-                        Navigator.pushNamed(context, RoutesName.navigationBar);
+                        _viewModel.registerUser(
+                              firstName: firstNameController.text,
+                              lastName: lastNameController.text,
+                              designation: designationController.text,
+                              email: emailController.text,
+                              password: passwordController.text,
+                              context: context,
+                            );
                       }
                     }),
               ),

@@ -10,4 +10,5 @@ class RoutesName{
   static const String setting = 'setting_screen';
   static const String changePassword = 'changePassword_screen';
   static const String navigationBar = 'navigationBar';
+  static const String forgotPassword = 'forgotPassword_screen';
 }

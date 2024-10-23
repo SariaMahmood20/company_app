@@ -27,7 +27,7 @@ class Utils{
           borderRadius: BorderRadius.circular(20),
           icon: const Icon(Icons.error, color: Colors.white, size: 28,),
           message: message,
-          backgroundColor: Colors.red,
+          backgroundColor: Color(0xA1565353),
           duration: const Duration(seconds: 3),
         )..show(context)
     );
