@@ -1,12 +1,10 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 
 class CheckRowWidget extends StatelessWidget {
 
-  const CheckRowWidget({super.key, required this.text, required this.time});
+  const CheckRowWidget({super.key, required this.text, required this.time, required this.styles});
+  final TextStyle styles;
   final String text;
   final String time;
   @override
@@ -16,13 +14,9 @@ class CheckRowWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(text,
-            style: GoogleFonts.roboto(
-                fontSize: 13.h,
-                fontWeight: FontWeight.w500)),
+            style: styles),
         Text(time,
-            style: GoogleFonts.roboto(
-                fontSize: 13.h,
-                fontWeight: FontWeight.w500)),
+            style: styles),
       ],
     );
   }

@@ -6,7 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:deutics_attendance_app/app/navigation/route_names.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 
+
 class NewApplicationCard extends StatelessWidget {
+  
   const NewApplicationCard({super.key});
 
   @override

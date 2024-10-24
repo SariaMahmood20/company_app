@@ -3,9 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:deutics_attendance_app/features/leaves/presentation/widgets/status_widget.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
+import 'package:deutics_attendance_app/features/leaves/data/models/application_model.dart';
+import 'package:deutics_attendance_app/features/user/data/models/user_model.dart';
 
 class ApplicationCard extends StatelessWidget {
-  const ApplicationCard({super.key});
+  final String applicationTitle;
+  final String userPfp;
+  final String userName;
+  final String designation;
+  const ApplicationCard({super.key, required this.applicationTitle, required this.userPfp, required this.designation, required this.userName });
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +36,11 @@ class ApplicationCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Saria Mahmood",
+                        userName,
                         style: styles.roboto16w600
                       ),
                       Text(
-                        "Flutter Developer",
+                        designation,
                         style: styles.roboto8w400,
                       ),
                     ],
@@ -47,7 +53,7 @@ class ApplicationCard extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Application for Sick Leave",
+                      applicationTitle,
                       style: styles.roboto16w400,
                     ),
                     SizedBox(height: 20.h,),

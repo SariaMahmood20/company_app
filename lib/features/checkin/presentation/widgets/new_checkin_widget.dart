@@ -10,50 +10,56 @@ import 'package:deutics_attendance_app/features/checkin/presentation/view_models
 class NewCheckinWidget extends StatelessWidget {
   final String? text;
   final Timestamp? date;
+  final String? userName ;
+  final String? designation;
   // final VoidCallbackAction onCheck;
-  const NewCheckinWidget({super.key, required this.date, required this.text});
+  const NewCheckinWidget({super.key, required this.date, required this.text, required this.userName, required this.designation});
 
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
-    return Container(
-        width: double.infinity,
-        child: Card(
-            color: styles.neutralColor,
-            elevation: 6.h,
-            child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        const CircleAvatar(),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Saria Mahmood", style: styles.roboto16w600),
-                            Text(
-                              "Flutter Developer",
-                              style: styles.roboto8w400,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15.h,
-                    ),
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20.w),
-                        child: const Column(children: [
-                          // Use the TextCheckRow widget here
-                          TextCheckRow(
+    return Consumer<CheckinViewModel>(
+      builder: (context, checkinProvider, child){
+        return  Container(
+          width: double.infinity,
+          child: Card(
+              color: styles.neutralColor,
+              elevation: 6.h,
+              child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          const CircleAvatar(),
+                          SizedBox(
+                            width: 10.w,
                           ),
-                        ]))
-                  ],
-                ))));
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(userName.toString(), style: styles.roboto16w600),
+                              Text(
+                                designation.toString(),
+                                style: styles.roboto8w400,
+                              ),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 15.h,
+                      ),
+                      Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
+                          child: const Column(children: [
+                            // Use the TextCheckRow widget here
+                            TextCheckRow(
+                            ),
+                          ]))
+                    ],
+                  ))));
+      },
+    );
   }
 }

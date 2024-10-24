@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 
 class PostCard extends StatelessWidget {
-  const PostCard({super.key});
+  final String postContent;
+  const PostCard({super.key, required this.postContent});
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class PostCard extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child: Text(
-                  "What's on your mind?sdjfasdkljfasdhkhfasdjklfbjksdbcbnasjklfgasdjhkfbnsc sdjkfhsdjhcksd jhshfjkasd jhdnasc sdkhdfjkhasdklhfgasdkfbsdfbsdk",
+                  postContent,
                   style: styles.roboto16w400,
                 ),
               )

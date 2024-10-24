@@ -1,10 +1,16 @@
 
+import 'package:deutics_attendance_app/app/utils/date_provider.dart';
+import 'package:deutics_attendance_app/features/checkin/presentation/view_models/checkin_view_model.dart';
+import 'package:deutics_attendance_app/features/leaves/presentation/view_models/application_view_model.dart';
+import 'package:deutics_attendance_app/features/posts/presentation/view_models/post_view_model.dart';
+import 'package:deutics_attendance_app/features/user/presentation/view_models/user_view_model.dart';
 import 'package:deutics_attendance_app/homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 
 import 'package:deutics_attendance_app/app/navigation/route_names.dart';
 import 'package:deutics_attendance_app/app/navigation/routes.dart';
@@ -33,11 +39,20 @@ class MainApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
-          theme: lightTheme, // Apply the lightTheme here
-          initialRoute: RouteNames.navigationBar,
-          onGenerateRoute: Routes.generateRoutes,
-          // home: Homepage(),
+        return MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (_)=>PostViewModel()),
+            ChangeNotifierProvider(create: (_)=>ApplicationViewModel()),
+            ChangeNotifierProvider(create: (_)=>CheckinViewModel()),
+            ChangeNotifierProvider(create: (_)=>UserViewModel()),
+            ChangeNotifierProvider(create: (_)=>DateProvider())
+          ],
+          child: MaterialApp(
+            theme: lightTheme, // Apply the lightTheme here
+            initialRoute: RouteNames.navigationBar,
+            onGenerateRoute: Routes.generateRoutes,
+            // home: Homepage(),
+          ),
         );
       },
     );

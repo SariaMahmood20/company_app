@@ -1,36 +1,68 @@
+// ignore_for_file: depend_on_referenced_packages
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deutics_attendance_app/features/checkin/data/models/checkin_model.dart';
 
-const String CHECKIN_REF = "check_in";
+
+const  String USER_COLLECTION_REF = "user";
+
+const String DOC_REF = "check_in";
+
+const String records = "Records";
 
 class CheckinService {
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  late final CollectionReference<CheckinModel> _checkinRef;
+  final _firestore = FirebaseFirestore.instance;
+
+  late final CollectionReference _userRef;
 
   CheckinService() {
-    _checkinRef = _firestore.collection(CHECKIN_REF).withConverter<CheckinModel>(
+    _userRef = _firestore.collection(USER_COLLECTION_REF).withConverter<CheckinModel>(
       fromFirestore: (snapshots, _) => CheckinModel.fromJson(snapshots.data()!),
-      toFirestore: (checkin, _) => checkin.toJsonInstance(),
+      toFirestore: (checkin, _) => checkin.toJson(),
     );
   }
 
-  Future<void> checkIn(CheckinModel checkin, String employeeId) async {
-    try {
-      await _checkinRef.doc(employeeId).set(checkin.toJsonInstance() as CheckinModel, SetOptions(merge: true));
-    } catch (e) {
-      // Handle error, e.g., log the error or show a message
-      print("Error checking in: $e");
-    }
+  Stream<List<CheckinModel>> getAllCheckins() {
+    return _firestore
+        .collection(USER_COLLECTION_REF)
+        .doc(DOC_REF)
+        .collection(records)
+        .withConverter(
+          fromFirestore: (snapshots, _) => CheckinModel.fromJson(snapshots.data()!),
+          toFirestore: (checkins, _) => checkins.toJson(),
+        )
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
   }
 
-  Future<void> checkOut(String employeeId, String checkOutTime) async {
-    try {
-      await _checkinRef.doc(employeeId).update({
-        'check_out': checkOutTime,
-      });
-    } catch (e) {
-      // Handle error, e.g., log the error or show a message
-      print("Error checking out: $e");
-    }
+  Stream<List<CheckinModel>> getCheckinForUser(String userId) {
+    return _firestore
+        .collection(USER_COLLECTION_REF)
+        .doc(DOC_REF)
+        .collection(records)
+        .withConverter(
+          fromFirestore: (snapshots, _) => CheckinModel.fromJson(snapshots.data()!),
+          toFirestore: (checkins, _) => checkins.toJson(),
+        )
+        .snapshots()
+        .map((snapshot) => snapshot.docs.map((doc) => doc.data()).toList());
+  }
+
+  void addCheckin(CheckinModel checkin) async {
+    await _firestore
+        .collection(USER_COLLECTION_REF)
+        .doc(DOC_REF)
+        .collection(records)
+        .add(checkin.toJson());
+  }
+
+  // New update method to change only the checkout time
+  void updateCheckin(String documentId, Timestamp checkOut) async {
+    await _firestore
+        .collection(USER_COLLECTION_REF)
+        .doc(DOC_REF)
+        .collection(records)
+        .doc(documentId)
+        .update({'checkOut': checkOut}); // Update only the checkOut field
   }
 }

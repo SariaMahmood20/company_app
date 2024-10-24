@@ -13,7 +13,7 @@ class RegisterUserService {
         .withConverter<UserModel>(
             fromFirestore: (snapshots, _) =>
                 UserModel.fromJson(snapshots.data()!),
-            toFirestore: (snapshots, _) => UserModel.toJson(snapshots));
+            toFirestore: (snapshots, _) => snapshots.toJson());
   }
 
   Stream<QuerySnapshot> getUser(){

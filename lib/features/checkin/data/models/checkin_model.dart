@@ -11,31 +11,29 @@ class CheckinModel {
   late final Timestamp checkOut; // Change data type to Timestamp
   late final String employeeId;
 
+  // Constructor to create the model from JSON
   CheckinModel.fromJson(Map<String, dynamic> json) {
-    checkIn = json['check_in'] != null ? Timestamp.fromMillisecondsSinceEpoch(json['check_in'].millisecondsSinceEpoch) : Timestamp.now();
-    checkOut = json['check_out'] != null ? Timestamp.fromMillisecondsSinceEpoch(json['check_out'].millisecondsSinceEpoch) : Timestamp.now();
+    checkIn = json['check_in'] != null
+        ? Timestamp.fromMillisecondsSinceEpoch(json['check_in'].millisecondsSinceEpoch)
+        : Timestamp.now();
+    checkOut = json['check_out'] != null
+        ? Timestamp.fromMillisecondsSinceEpoch(json['check_out'].millisecondsSinceEpoch)
+        : Timestamp.now();
     employeeId = json['employee_id'];
   }
 
-  // Convert instance to JSON using a static method
-  static Map<String, dynamic> toJson(CheckinModel instance) {
-    final _data = <String, dynamic>{};
-    _data['check_in'] = instance.checkIn; // Firebase Timestamp can be directly used
-    _data['check_out'] = instance.checkOut; // Firebase Timestamp can be directly used
-    _data['employee_id'] = instance.employeeId;
-    return _data;
+  String? get id => null;
+
+  // Instance method to convert the model to JSON
+  Map<String, dynamic> toJson() {
+    final data = <String, dynamic>{};
+    data['check_in'] = checkIn; // Firebase Timestamp can be directly used
+    data['check_out'] = checkOut; // Firebase Timestamp can be directly used
+    data['employee_id'] = employeeId;
+    return data;
   }
 
-  // Method to convert instance to JSON (instance method)
-  Map<String, dynamic> toJsonInstance() {
-    return {
-      'check_in': checkIn,
-      'check_out': checkOut,
-      'employee_id': employeeId,
-    };
-  }
-
-  // Add copyWith method
+  // Add copyWith method for immutability and updates
   CheckinModel copyWith({
     Timestamp? checkIn,
     Timestamp? checkOut,

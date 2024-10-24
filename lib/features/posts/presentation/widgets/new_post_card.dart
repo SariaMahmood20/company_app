@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deutics_attendance_app/app/views/widget/button.dart';
 import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'package:deutics_attendance_app/app/utils/utils_function.dart';
 import 'package:deutics_attendance_app/features/posts/presentation/view_models/post_view_model.dart';
@@ -15,8 +16,9 @@ class NewPostCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final styles = Theme.of(context).extension<AppTheme>()!;
-    final postViewModel = Provider.of<PostViewModel>(context);
-    return Column(
+    return Consumer<PostViewModel>(
+      builder: (context, postProvider, child){
+        return Column(
       children: [
         Container(
           width: double.infinity,
@@ -80,7 +82,7 @@ class NewPostCard extends StatelessWidget {
               buttonText: "POST", 
               onPressed: ()async {
                 final postContent = newPostController.text.trim();
-                await postViewModel.createPost(postContent, "1");
+                await postProvider.submitPost(content: postContent, time: Timestamp.now());
                 newPostController.clear();
                 // UtilsFunction.showFlushbarMessage(context, Colors.greenAccent, "Posted Successfully");
             })
@@ -90,6 +92,8 @@ class NewPostCard extends StatelessWidget {
           height: 20.h,
         )
       ],
+            );
+      },
     );
   }
 }
