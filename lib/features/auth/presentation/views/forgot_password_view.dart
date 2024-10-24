@@ -9,6 +9,7 @@ import '../view_models/auth_view_model.dart';
 import '../widgets/headings.dart';
 import '../widgets/text_button.dart';
 import '../widgets/text_field.dart';
+import 'package:provider/provider.dart';
 
 class ForgotPasswordView extends StatefulWidget {
   const ForgotPasswordView({super.key});
@@ -21,11 +22,14 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
   final AuthViewModel _viewModel = AuthViewModel();
 
   final TextEditingController emailController = TextEditingController();
+  final emailFocusNode = FocusNode();
+
 
 
   @override
   void dispose() {
     emailController.dispose();
+    emailFocusNode.dispose();
     super.dispose();
   }
 
@@ -70,21 +74,36 @@ class _ForgotPasswordViewState extends State<ForgotPasswordView> {
                 descriptionColor: Color(0xFF888888),
               ),
               50.verticalSpace,
-              EditTextField(labelText: 'Email Address', controller: emailController, keyboardType: TextInputType.emailAddress, obscureText: false),
+              EditTextField(
+                  labelText: 'Email Address',
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: false,
+                currentFocusNode: emailFocusNode,
+              ),
               100.verticalSpace,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(buttonText: "Send",onPressed: (){
-                  if (emailController.text.isEmpty) {
-                    Utils.flushBarErrorMessages(
-                        "Please enter Email", context);
-                  }else {
-                    print("button pressed");
-                    _viewModel.sendPasswordResetEmail(
-                        email: emailController.text,
-                        context: context);
-                  }
-                },),
+              ChangeNotifierProvider(
+                  create: (_) => AuthViewModel(),
+                  child: Consumer<AuthViewModel>(
+                    builder: (context, provider, child){
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: AppButton(
+                          loading: provider.isLoading,
+                          buttonText: "Send",
+                          onPressed: (){
+                            if (emailController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter Email", context);
+                            }else {
+                              provider.sendPasswordResetEmail(
+                                  email: emailController.text,
+                                  context: context);
+                            }
+                          },),
+                      );
+                    },
+                  )
               ),
             ],
           ),

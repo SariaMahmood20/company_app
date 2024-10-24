@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 class UtilsFunction{
   
-  static void showModalSheet(BuildContext context, Widget child){
+  static void showModalSheet(BuildContext context, Widget child, ){
     showModalBottomSheet(
       context: context, 
       builder: (_){

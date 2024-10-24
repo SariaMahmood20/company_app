@@ -1,3 +1,4 @@
+import 'package:deutics_attendance_app/features/auth/data/services/session_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -7,6 +8,7 @@ import 'package:deutics_attendance_app/app/resources/app_theme.dart';
 import 'package:deutics_attendance_app/app/constants/svg_icons.dart';
 
 import '../../../app/routes/routes_name.dart';
+import '../widgets/image_widget.dart';
 
 class UserScreen extends StatelessWidget {
   UserScreen({super.key});
@@ -24,8 +26,9 @@ class UserScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 40.h),
           child: Column(
             children: [
-              CircleAvatar(),
               SizedBox(height: 40.h,),
+              const ImageWidget(imageUrl: 'https://www.sefram.com/images/products/photos/hi_res/7202.jpg',),
+              SizedBox(height: 20.h,),
               Text("Saria Mahmood", style: styles.roboto16w600,),
               Text("Flutter Developer", style: styles.roboto8w400,),
               SizedBox(height: 70.h,),
@@ -58,6 +61,8 @@ class UserScreen extends StatelessWidget {
               GestureDetector(
                 onTap: (){
                   _auth.signOut();
+                  SessionController().userId = '';
+                  Navigator.pushNamed(context, RoutesName.login);
                 },
                 child: ListTile(
                   leading: SvgPicture.asset(

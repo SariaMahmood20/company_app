@@ -1,15 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../view_models/auth_view_model.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../app/routes/routes_name.dart';
 import '../../../../app/utils/utils.dart';
 import '../../../../app/views/widget/app_button.dart';
-import '../view_models/auth_view_model.dart';
 import '../widgets/headings.dart';
 import '../widgets/termcondition_string.dart';
 import '../widgets/text_button.dart';
 import '../widgets/text_field.dart';
+
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -19,14 +21,17 @@ class SignInView extends StatefulWidget {
 }
 
 class _SignInViewState extends State<SignInView> {
-  final AuthViewModel _viewModel = AuthViewModel();
-
 
   final TextEditingController firstNameController = TextEditingController();
   final TextEditingController lastNameController = TextEditingController();
   final TextEditingController designationController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final fNameFocusNode = FocusNode();
+  final lNameFocusNode = FocusNode();
+  final designationFocusNode = FocusNode();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
 
 
   @override
@@ -36,144 +41,166 @@ class _SignInViewState extends State<SignInView> {
     designationController.dispose();
     emailController.dispose();
     passwordController.dispose();
+    fNameFocusNode.dispose();
+    lNameFocusNode.dispose();
+    designationFocusNode.dispose();
+    emailFocusNode.dispose();
+    passwordFocusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(
-              left: 23.w, right: 23.w, top: 140.h, bottom: 20.h),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    'REGISTER',
-                    style: GoogleFonts.roboto(
-                        color: Colors.black,
-                        fontSize: 23.sp,
-                        fontWeight: FontWeight.w400),
-                  ),
-                  CustomTextButton(
-                    text: 'SIGN IN',
-                    fontSize: 15,
-                    textDecoration: TextDecoration.underline,
-                    onPressed: () {
-                       Navigator.pushNamed(context, RoutesName.login);
-                    },
-                  ),
-                ],
-              ),
-              40.verticalSpace,
-              const CustomTextColumn(
-                titleText: 'NEW IN DEUTICS',
-                titleFontSize: 16,
-                descriptionText: 'Register to speed up',
-                descriptionFontSize: 15,
-                descriptionColor: Color(0xFF888888),
-              ),
-              50.verticalSpace,
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: EditTextField(
-                      controller: firstNameController,
-                      labelText: 'First Name',
+      body: ChangeNotifierProvider(
+        create: (_) => AuthViewModel(),
+        child: Consumer<AuthViewModel>(
+          builder: (context, provider, child){
+            return SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: 23.w, right: 23.w, top: 140.h, bottom: 20.h),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'REGISTER',
+                          style: GoogleFonts.roboto(
+                              color: Colors.black,
+                              fontSize: 23.sp,
+                              fontWeight: FontWeight.w400),
+                        ),
+                        CustomTextButton(
+                          text: 'SIGN IN',
+                          fontSize: 15,
+                          textDecoration: TextDecoration.underline,
+                          onPressed: () {
+                             Navigator.pushNamed(context, RoutesName.login);
+                          },
+                        ),
+                      ],
+                    ),
+                    40.verticalSpace,
+                    const CustomTextColumn(
+                      titleText: 'NEW IN DEUTICS',
+                      titleFontSize: 16,
+                      descriptionText: 'Register to speed up',
+                      descriptionFontSize: 15,
+                      descriptionColor: Color(0xFF888888),
+                    ),
+                    50.verticalSpace,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: EditTextField(
+                            controller: firstNameController,
+                            labelText: 'First Name',
+                            keyboardType: TextInputType.text,
+                            obscureText: false,
+                            currentFocusNode: fNameFocusNode,
+                            nextFocusNode: lNameFocusNode,
+                          ),
+                        ),
+                        20.horizontalSpace,
+                        Expanded(
+                          child: EditTextField(
+                            controller: lastNameController,
+                            labelText: 'Last Name',
+                            keyboardType: TextInputType.text,
+                            obscureText: false,
+                            currentFocusNode: lNameFocusNode,
+                            nextFocusNode: designationFocusNode,
+                          ),
+                        ),
+                      ],
+                    ),
+                    5.verticalSpace,
+                    EditTextField(
+                      controller: designationController,
+                      labelText: 'Designation',
                       keyboardType: TextInputType.text,
                       obscureText: false,
+                      currentFocusNode: designationFocusNode,
+                      nextFocusNode: emailFocusNode,
                     ),
-                  ),
-                  20.horizontalSpace,
-                  Expanded(
-                    child: EditTextField(
-                      controller: lastNameController,
-                      labelText: 'Last Name',
-                      keyboardType: TextInputType.text,
+                    5.verticalSpace,
+                    EditTextField(
+                      controller: emailController,
+                      labelText: 'Email Address',
+                      keyboardType: TextInputType.emailAddress,
                       obscureText: false,
+                      currentFocusNode: emailFocusNode,
+                      nextFocusNode: passwordFocusNode,
                     ),
-                  ),
-                ],
+                    5.verticalSpace,
+                    EditTextField(
+                      controller: passwordController,
+                      labelText: 'Password',
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                      currentFocusNode: passwordFocusNode,
+                    ),
+                    15.verticalSpace,
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 15.sp, vertical: 5.sp),
+                      child: const TextString(
+                          text:
+                              'By you clicking Register Now, You agree to aur \nTerm & Conditions and Privacy Policy',
+                          textFontSize: 14,
+                          textColor: Color(0xFF888888)),
+                    ),
+                    65.verticalSpace,
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: AppButton(
+                        loading: provider.isLoading,
+                          buttonText: "REGISTER NOW",
+                          onPressed: () {
+                            if (firstNameController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter First Name", context);
+                            } else if (lastNameController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter Last Name", context);
+                            } else if (designationController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter Last Name", context);
+                            } else if (emailController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter Email", context);
+                            } else if (passwordController.text.isEmpty) {
+                              Utils.flushBarErrorMessages(
+                                  "Please enter Password", context);
+                            } else if (passwordController.text.length < 6) {
+                              Utils.flushBarErrorMessages(
+                                  "Password must be greater then 6", context);
+                            } else {
+                              provider.registerUser(
+                                    firstName: firstNameController.text,
+                                    lastName: lastNameController.text,
+                                    designation: designationController.text,
+                                    email: emailController.text,
+                                    password: passwordController.text,
+                                    context: context,
+                                  );
+                            }
+                          }),
+                    ),
+                  ],
+                ),
               ),
-              5.verticalSpace,
-              EditTextField(
-                controller: designationController,
-                labelText: 'Designation',
-                keyboardType: TextInputType.text,
-                obscureText: false,
-              ),
-              5.verticalSpace,
-              EditTextField(
-                controller: emailController,
-                labelText: 'Email Address',
-                keyboardType: TextInputType.emailAddress,
-                obscureText: false,
-              ),
-              5.verticalSpace,
-              EditTextField(
-                controller: passwordController,
-                labelText: 'Password',
-                keyboardType: TextInputType.visiblePassword,
-                obscureText: true,
-              ),
-              15.verticalSpace,
-              Padding(
-                padding:
-                    EdgeInsets.symmetric(horizontal: 15.sp, vertical: 5.sp),
-                child: const TextString(
-                    text:
-                        'By you clicking Register Now, Ypu agree to aur \nTerm & Conditions and Privacy Policy',
-                    textFontSize: 14,
-                    textColor: Color(0xFF888888)),
-              ),
-              65.verticalSpace,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(
-                    buttonText: "REGISTER NOW",
-                    onPressed: () {
-                      if (firstNameController.text.isEmpty) {
-                        Utils.flushBarErrorMessages(
-                            "Please enter First Name", context);
-                      } else if (lastNameController.text.isEmpty) {
-                        Utils.flushBarErrorMessages(
-                            "Please enter Last Name", context);
-                      } else if (designationController.text.isEmpty) {
-                        Utils.flushBarErrorMessages(
-                            "Please enter Last Name", context);
-                      } else if (emailController.text.isEmpty) {
-                        Utils.flushBarErrorMessages(
-                            "Please enter Email", context);
-                      } else if (passwordController.text.isEmpty) {
-                        Utils.flushBarErrorMessages(
-                            "Please enter Password", context);
-                      } else if (passwordController.text.length < 6) {
-                        Utils.flushBarErrorMessages(
-                            "Password must be greater then 6", context);
-                      } else {
-                        _viewModel.registerUser(
-                              firstName: firstNameController.text,
-                              lastName: lastNameController.text,
-                              designation: designationController.text,
-                              email: emailController.text,
-                              password: passwordController.text,
-                              context: context,
-                            );
-                      }
-                    }),
-              ),
-            ],
-          ),
-        ),
-      ),
+            );
+          },
+        )
+      )
     );
   }
 }

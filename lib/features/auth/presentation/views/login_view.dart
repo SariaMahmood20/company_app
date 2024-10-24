@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../app/resources/app_theme.dart';
+import 'package:provider/provider.dart';
 import '../../../../app/routes/routes_name.dart';
 import '../../../../app/utils/utils.dart';
 import '../../../../app/views/widget/app_button.dart';
@@ -24,12 +24,16 @@ class _LoginViewState extends State<LoginView> {
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final emailFocusNode = FocusNode();
+  final passwordFocusNode = FocusNode();
 
 
   @override
   void dispose() {
     emailController.dispose();
     passwordController.dispose();
+    passwordFocusNode.dispose();
+    emailFocusNode.dispose();
     super.dispose();
   }
 
@@ -74,9 +78,22 @@ class _LoginViewState extends State<LoginView> {
                 descriptionColor: Color(0xFF888888),
               ),
               50.verticalSpace,
-              EditTextField(labelText: 'Email Address', controller: emailController, keyboardType: TextInputType.emailAddress, obscureText: false),
+              EditTextField(
+                  labelText: 'Email Address',
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: false,
+                currentFocusNode: emailFocusNode,
+                nextFocusNode: passwordFocusNode,
+              ),
               15.verticalSpace,
-              EditTextField(labelText: 'Password', controller: passwordController, keyboardType: TextInputType.visiblePassword, obscureText: true),
+              EditTextField(
+                  labelText: 'Password',
+                  controller: passwordController,
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true,
+                currentFocusNode: passwordFocusNode,
+              ),
               10.verticalSpace,
               Align(
                 alignment: Alignment.centerRight,
@@ -90,22 +107,32 @@ class _LoginViewState extends State<LoginView> {
                 ),
               ),
               100.verticalSpace,
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10.w),
-                child: AppButton(buttonText: "SIGN IN",onPressed: (){
-                  if (emailController.text.isEmpty) {
-                  Utils.flushBarErrorMessages(
-                  "Please enter Email", context);
-                  } else if (passwordController.text.isEmpty) {
-                  Utils.flushBarErrorMessages(
-                  "Please enter Password", context);
-                  } else {
-                    _viewModel.loginUser(
-                        email: emailController.text,
-                        password: passwordController.text,
-                        context: context);
-                  }
-                },),
+              ChangeNotifierProvider(
+                create: (_) => AuthViewModel(),
+                child: Consumer<AuthViewModel>(
+                  builder: (context, provider, child){
+                    return Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10.w),
+                      child: AppButton(
+                        loading: provider.isLoading,
+                        buttonText: "SIGN IN",
+                        onPressed: (){
+                          if (emailController.text.isEmpty) {
+                            Utils.flushBarErrorMessages(
+                                "Please enter Email", context);
+                          } else if (passwordController.text.isEmpty) {
+                            Utils.flushBarErrorMessages(
+                                "Please enter Password", context);
+                          } else {
+                            provider.loginUser(
+                                email: emailController.text,
+                                password: passwordController.text,
+                                context: context);
+                          }
+                        },),
+                    );
+                  },
+                )
               ),
             ],
           ),

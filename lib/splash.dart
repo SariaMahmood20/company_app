@@ -8,27 +8,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class SplashView extends StatelessWidget {
-  SplashView({super.key});
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+  const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
     SplashService().checkLoginStatus(context);
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text("Splash Screen",
-            style: GoogleFonts.roboto(
-              fontSize: 30.h,
-              fontWeight: FontWeight.w900,
-              color: Colors.black, // Constant title color
-            ),
-            ),
-            Text("USER: ${_auth.currentUser!.displayName}"),
-          ],
+        child: Text("Splash Screen",
+        style: GoogleFonts.roboto(
+          fontSize: 30.h,
+          fontWeight: FontWeight.w900,
+          color: Colors.black,),
         ),
       ),
     );

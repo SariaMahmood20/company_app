@@ -5,17 +5,18 @@ import 'package:google_fonts/google_fonts.dart';
 class AppButton extends StatelessWidget {
   final String buttonText;
   final VoidCallback? onPressed;
-  const AppButton({super.key, required this.buttonText, this.onPressed,});
+  final bool loading;
+  const AppButton({super.key, required this.buttonText, this.onPressed, required this.loading,});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
+      onPressed: loading ? null : onPressed,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(vertical: 16.h),
         backgroundColor: Colors.black,
       ),
-      child: Text(
+      child: loading ? const Center(child: CircularProgressIndicator()) : Text(
         buttonText,
         style: GoogleFonts.roboto(
             color: Colors.white,

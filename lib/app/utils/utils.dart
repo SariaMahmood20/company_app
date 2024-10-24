@@ -5,13 +5,23 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 class Utils{
 
-  static void fieldFocusChange(BuildContext context, FocusNode currect, FocusNode next){
-    currect.unfocus();
+  static void fieldFocusChange(BuildContext context, FocusNode current, FocusNode next){
+    current.unfocus();
     FocusScope.of(context).requestFocus(next);
   }
 
-  static toastMessag(String message){
-    Fluttertoast.showToast(msg: message);
+
+
+  static toastMessage(String message){
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.green,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
   }
 
   static void flushBarErrorMessages(String message, BuildContext context){
