@@ -56,7 +56,8 @@ class NewCheckinWidget extends StatelessWidget {
                             // Use the TextCheckRow widget here
                             TextCheckRow(
                             ),
-                          ]))
+                          ])),
+                          SizedBox(height: 15.h,)
                     ],
                   ))));
       },

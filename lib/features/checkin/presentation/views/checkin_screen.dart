@@ -46,10 +46,15 @@ class CheckInScreen extends StatelessWidget {
                     itemCount: checkinProvider.checkinRecords.length,
                     itemBuilder: (context, index) {
 
-                      return CheckInWidget(
-                        checkinTime: checkinProvider.checkinRecords[index].checkIn,
-                        checkoutTIme: checkinViewModel.checkinRecords[index].checkOut,
-                        
+                      return Column(
+                        children: [
+                          CheckInWidget(
+                            checkinTime: checkinProvider.checkinRecords[index].checkIn,
+                            checkoutTIme: checkinViewModel.checkinRecords[index].checkOut,
+                            
+                          ),
+                          SizedBox(height: 15.h,)
+                        ],
                       );
                     },
                   );

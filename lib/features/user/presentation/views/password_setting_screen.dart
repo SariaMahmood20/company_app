@@ -16,13 +16,14 @@ class PasswordSettingScreen extends StatefulWidget {
 }
 
 class _PasswordSettingScreenState extends State<PasswordSettingScreen> {
+  
   final _newPassword = TextEditingController();
   final _confirmPassword = TextEditingController();
   final _currentPassword = TextEditingController();
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    
     super.dispose();
     _newPassword.dispose();
     _currentPassword.dispose();
@@ -50,6 +51,15 @@ class _PasswordSettingScreenState extends State<PasswordSettingScreen> {
                     hintText: "Enter Current Password",
                     hintStyle: styles.roboto14w400.copyWith(color: Colors.grey)
                   ),
+                  validator: (value){
+                    if(value == null || value.isEmpty){
+                      return "Please enter your password";
+                    }
+                    if(value != userProvider.user!.password){
+                      return "Incorrect Password";
+                    }
+                    return null;
+                  }
                 ),
                 SizedBox(height: 65.h,),
                 TextFormField(
@@ -60,6 +70,18 @@ class _PasswordSettingScreenState extends State<PasswordSettingScreen> {
                     hintText: "Enter New Password",
                     hintStyle: styles.roboto14w400.copyWith(color: Colors.grey)
                   ),
+                  validator: (value){
+                    if(value == null|| value.isEmpty){
+                      return "PLease enter the password";
+                    }
+                    if(value.length < 6){
+                      return "Please enter bigger password";
+                    }
+                    if(value == userProvider.user!.password){
+                      return "This is same as your previous password" ;
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h,),
                 TextFormField(
@@ -70,6 +92,17 @@ class _PasswordSettingScreenState extends State<PasswordSettingScreen> {
                     hintText: "Confirm New Password",
                     hintStyle: styles.roboto14w400.copyWith(color: Colors.grey),
                   ),
+                  validator: (value){
+
+                    if(value == null || value.isEmpty){
+                      return "Please confirm your password";
+                    }
+                    
+                    if(value != _newPassword.value){
+                      return "Please match your password";
+                    }
+                    return null;
+                  },
                 ),
                 SizedBox(height: 30.h,),
                 Text(

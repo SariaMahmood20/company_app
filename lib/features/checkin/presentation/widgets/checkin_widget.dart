@@ -67,9 +67,9 @@ class CheckInWidget extends StatelessWidget {
                       EdgeInsets.symmetric(horizontal: 25.w, vertical: 15.h),
                   child: Column(
                     children: [
-                      CheckRowWidget(text: "CHECK IN",time: checkinTime.toString(), styles: textStyle,),
+                      CheckRowWidget(text: "CHECK IN",time: checkinTime, styles: textStyle,),
                       Divider(),
-                      CheckRowWidget(text: "CHECK OUT",time: checkoutTIme.toString(), styles: textStyle,)
+                      CheckRowWidget(text: "CHECK OUT",time: checkoutTIme, styles: textStyle,)
                     ],
                   ),
                 ),

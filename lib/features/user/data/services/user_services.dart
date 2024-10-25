@@ -31,9 +31,7 @@ class UserServices {
     final UserModel user;
     final snapshot = await _firestore.collection(USER_COLLECTION_REF).doc(DOC_REF).get();
     if (snapshot.exists) {
-      print(snapshot.toString()+"1234567890");
       user = UserModel.fromJson(snapshot.data()!);
-      print(user.email);
       return user;
 
     } else {

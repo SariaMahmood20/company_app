@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:deutics_attendance_app/features/user/data/models/user_model.dart';
 
-const String REGISTER_USER_PREF = "user_model";
+const String REGISTER_USER_PREF = "user";
 
 class RegisterUserService {
   final _firestore = FirebaseFirestore.instance;
